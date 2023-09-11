@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88241417941",
+    "project_id": "ment-ally-a207a",
+    "storage_bucket": "ment-ally-a207a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88241417941:android:cfb618febe288ed3643c5c",
+        "android_client_info": {
+          "package_name": "com.example.project1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSSdOqEq8tFtEg9xvF2BZFZZo-EaXy_VM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
