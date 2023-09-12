@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:project1/view/register_view.dart';
 
 // import 'view/login_view.dart';
 // import 'view/register_view.dart';
@@ -24,7 +25,7 @@ void main() {
     //     backgroundColor: Colors.white,
     //     image: 'assets/image2-transformed.jpeg',
     //     duration: 30000),
-    home: const HomePage(),
+    home: const RegisterView(),
   ));
 }
 
@@ -122,10 +123,13 @@ class HomePage extends StatelessWidget {
             case ConnectionState.done:
               final user = FirebaseAuth.instance.currentUser;
               if (user?.emailVerified ?? false) {
-                print("Your are a verified user");
+                //After understanding the use of debug console I am commenting out the print().
+                // print("Your are a verified user");
+              } else {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const VerifyEmailView()));
+                return const Text("The process has completed.");
               }
-
-              return const Text("The process has completed.");
 
             //As much as I know right now this tells whether the
             // connection has established or not but I need to check out more.
@@ -133,8 +137,28 @@ class HomePage extends StatelessWidget {
             default:
               return const Text("Taking my time.....");
           }
+
+          return const Scaffold();
         },
       ),
+    );
+  }
+}
+
+//Here I want to create a email verification widget.
+
+class VerifyEmailView extends StatefulWidget {
+  const VerifyEmailView({super.key});
+
+  @override
+  State<VerifyEmailView> createState() => _VerifyEmailViewState();
+}
+
+class _VerifyEmailViewState extends State<VerifyEmailView> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Verify Email.")),
     );
   }
 }
