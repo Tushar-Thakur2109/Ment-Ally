@@ -1,0 +1,26 @@
+{
+  "name": "project1",
+  "version": "1.0.0",
+  "description": "package_file",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tushar-Thakur2109/Ment-Ally.git"
+  },
+  "keywords": [
+    "firebase"
+  ],
+  "author": "Tushar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tushar-Thakur2109/Ment-Ally/issues"
+  },
+  "homepage": "https://github.com/Tushar-Thakur2109/Ment-Ally#readme"
+}
