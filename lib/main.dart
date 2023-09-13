@@ -2,7 +2,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:project1/view/login_view.dart';
 import 'package:project1/view/register_view.dart';
+// import 'package:project1/view/register_view.dart';
 
 // import 'view/login_view.dart';
 // import 'view/register_view.dart';
@@ -17,7 +19,8 @@ void main() {
   runApp(MaterialApp(
     title: 'Flutter Demo',
     theme: ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromRGBO(104, 24, 137, 25)),
       useMaterial3: true,
       // appBarTheme: const AppBarTheme(backgroundColor: Colors.yellow)
     ),
@@ -25,7 +28,14 @@ void main() {
     //     backgroundColor: Colors.white,
     //     image: 'assets/image2-transformed.jpeg',
     //     duration: 30000),
-    home: const RegisterView(),
+    home: const HomePage(),
+
+    //To create routes
+
+    routes: {
+      '/login/': (context) => const LoginView(),
+      '/register/': (context) => const RegisterView()
+    },
   ));
 }
 
@@ -58,6 +68,8 @@ void main() {
 //     return const HomePage();
 //   }
 // }
+
+//I will add this code later on.
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({
@@ -103,45 +115,48 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Image.asset(
-          'assets/logo2.png',
-          fit: BoxFit.cover,
-          alignment: Alignment.topCenter,
-        ),
-        centerTitle: true,
-        toolbarHeight: 150,
-        // backgroundColor: Color.fromARGB(255, 246, 5, 230),
-      ),
-      // child: [Center()],
-      body: FutureBuilder(
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Image.asset(
+    //       'assets/logo2.png',
+    //       fit: BoxFit.cover,
+    //       alignment: Alignment.topCenter,
+    //     ),
+    //     centerTitle: true,
+    //     toolbarHeight: 150,
+    //     // backgroundColor: Color.fromARGB(255, 246, 5, 230),
+    //   ),
+    //   // child: [Center()],
+    //   body:
+    return FutureBuilder(
         future: Firebase.initializeApp(
             options: DefaultFirebaseOptions.currentPlatform),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               final user = FirebaseAuth.instance.currentUser;
-              if (user?.emailVerified ?? false) {
-                //After understanding the use of debug console I am commenting out the print().
-                // print("Your are a verified user");
-              } else {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const VerifyEmailView()));
-                return const Text("The process has completed.");
-              }
+              // if (user?.emailVerified ?? false) {
+              //   //After understanding the use of debug console I am commenting out the print().
+              //   // print("Your are a verified user");
+              // } else {
+              //   //Definitely need to understand the code below.
+              //   Navigator.of(context).push(MaterialPageRoute(
+              //       builder: (context) => const VerifyEmailView()));
+              //   return const Text("The process has completed.");
+              // }
 
-            //As much as I know right now this tells whether the
-            // connection has established or not but I need to check out more.
-
+              //As much as I know right now this tells whether the
+              // connection has established or not but I need to check out more.
+              return const LoginView();
             default:
-              return const Text("Taking my time.....");
+              // return const Text("Taking my time.....");
+              return const CircularProgressIndicator(
+                strokeWidth: 1.0,
+              );
           }
-
-          return const Scaffold();
-        },
-      ),
-    );
+        });
+    // ),
+    // );
   }
 }
 
@@ -157,8 +172,38 @@ class VerifyEmailView extends StatefulWidget {
 class _VerifyEmailViewState extends State<VerifyEmailView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Verify Email.")),
-    );
+    return Column(children: [
+      TextButton(
+          onPressed: () async {
+            final user = FirebaseAuth.instance.currentUser;
+            await user?.sendEmailVerification();
+
+            //Checkout the use of async and await more.
+          },
+          child: const Text(
+            "Send email verification.",
+            style: TextStyle(color: Color.fromRGBO(104, 24, 137, 25)),
+          ))
+    ]);
   }
 }
+
+//Here I will write info related to some useful widgets:-
+
+//The first one is Text().
+
+// data: The text to be displayed.
+// style: The style of the text, such as the font, size, and color.
+// textAlign: The alignment of the text, such as left, right, or center.
+// maxLines: The maximum number of lines that the text should be allowed to take up.
+// overflow: What to do with the text if it exceeds the maxLines property. Possible values are ellipsis (to show an ellipsis (...) at the end), clip (to clip the text), or visible (to allow the text to overflow).
+// textWidthBasis: The basis for calculating the width of the text. Possible values are parent (to use the width of the parent widget) or longestLine (to use the width of the longest line of text).
+// locale: The locale of the text. This is used to determine the correct way to display characters and punctuation.
+// strutStyle: The strut style of the text. This controls the spacing between lines of text.
+// textHeightBehavior: How the text height should be calculated. Possible values are shrinkWrap (to shrink the text to fit the available space) or expand (to expand the text to fill the available space).
+// :semanticsLabel A human-readable label for the text. This is used by accessibility tools to describe the text to users.
+
+//Some of the things that I want to mention right now are that
+
+//One of the main aim of designing this app in this way is that we have only one scaffold and thus I am doing that only
+//Now the scaffold is only in the HomePage class and not the register_view and login_view.

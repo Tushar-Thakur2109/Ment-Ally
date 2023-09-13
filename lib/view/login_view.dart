@@ -7,7 +7,7 @@ import 'package:project1/firebase_options.dart';
 
 //This code is for the login page that is for someone who has already approached the app.
 
-//The other portion is that o
+//The other portion is that of the register view.
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -53,98 +53,109 @@ class _LoginViewState extends State<LoginView> {
     // );
     // return const SplashScreen();
 
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Image.asset(
+    //       'assets/logo2.png',
+    //       fit: BoxFit.cover,
+    //       alignment: Alignment.topCenter,
+    //     ),
+    //     centerTitle: true,
+    //     toolbarHeight: 150,
+    //     // backgroundColor: Color.fromARGB(255, 246, 5, 230),
+    //   ),
+    //   // child: [Center()],
+    //   body: FutureBuilder(
+    //     future: Firebase.initializeApp(
+    //         options: DefaultFirebaseOptions.currentPlatform),
+    //     builder: (context, snapshot) {
+    //       switch (snapshot.connectionState) {
+    //         case ConnectionState.done:
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          'assets/logo2.png',
-          fit: BoxFit.cover,
-          alignment: Alignment.topCenter,
-        ),
-        centerTitle: true,
-        toolbarHeight: 150,
-        // backgroundColor: Color.fromARGB(255, 246, 5, 230),
+        title: const Text("Login Page"),
       ),
-      // child: [Center()],
-      body: FutureBuilder(
-        future: Firebase.initializeApp(
-            options: DefaultFirebaseOptions.currentPlatform),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              return Column(
-                children: [
-                  const Text(
-                    "Do You Want To Login?",
-                    style: TextStyle(fontSize: 20, color: Colors.purple),
-                  ),
-                  TextField(
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    controller: _email,
-                    decoration: const InputDecoration(
-                        hintText: "Enter your email here.",
-                        border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.purple, width: 1.0))),
-                  ),
-                  TextField(
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    controller: _password,
-                    decoration: const InputDecoration(
-                        hintText: "Enter your password here."),
-                  ),
+      body: Column(
+        children: [
+          const Text(
+            "Do You Want To Login?",
+            style: TextStyle(fontSize: 20, color: Colors.purple),
+          ),
+          TextField(
+            enableSuggestions: false,
+            autocorrect: false,
+            controller: _email,
+            decoration: const InputDecoration(
+                hintText: "Enter your email here.",
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple, width: 1.0))),
+          ),
+          TextField(
+            obscureText: true,
+            enableSuggestions: false,
+            autocorrect: false,
+            controller: _password,
+            decoration:
+                const InputDecoration(hintText: "Enter your password here."),
+          ),
 
-                  //To grab the value of the text field is to use text controller.
+          //To grab the value of the text field is to use text controller.
 
-                  TextButton(
-                    onPressed: () async {
-                      final email = _email.text;
-                      final password = _password.text;
+          TextButton(
+            onPressed: () async {
+              final email = _email.text;
+              final password = _password.text;
 
-                      try {
-                        final userCredential = await FirebaseAuth.instance
-                            .signInWithEmailAndPassword(
-                          email: email,
-                          password: password,
+              try {
+                final userCredential =
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: email,
+                  password: password,
 
-                          //In my case instead of specific issues like username not found and password is wrong or
-                          // to short this is not working so right now I am handling them considering that they
-                          // come under the category of the Invalid User Credentials.
-                        );
+                  //In my case instead of specific issues like username not found and password is wrong or
+                  // to short this is not working so right now I am handling them considering that they
+                  // come under the category of the Invalid User Credentials.
+                );
 
-                        print(userCredential);
-                      } on FirebaseAuthException catch (e) {
-                        // if(e.code ==)
+                print(userCredential);
+              } on FirebaseAuthException catch (e) {
+                // if(e.code ==)
 
-                        print(e.code);
-                        print(e.runtimeType);
-                        // if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
-                        //   print("invalid user credentials");
-                        // }
-                        // else if (e.code == 'INVALID_LOGIN_CREDENTIALS')
+                print(e.code);
+                print(e.runtimeType);
+                // if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
+                //   print("invalid user credentials");
+                // }
+                // else if (e.code == 'INVALID_LOGIN_CREDENTIALS')
 
-                        //The above line of code might not be useful becuase the error that you are getting is
-                        //invalid user credentials and not invalid user name or password.
+                //The above line of code might not be useful becuase the error that you are getting is
+                //invalid user credentials and not invalid user name or password.
 
-                        //Checkout the other version too.
-                      }
+                //Checkout the other version too.
+              }
 
-                      // (
-                      // email: email,
-                      // password: password,
-                    },
-                    child: const Text("Login"),
-                  )
-                ],
-              );
-
-            default:
-              return const Text("Taking my time.....");
-          }
-        },
+              // (
+              // email: email,
+              // password: password,
+            },
+            child: const Text("Login"),
+          ),
+          TextButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/register/', (route) => false);
+              },
+              child: const Text(
+                  "If you have not registered so far then do it here!!!"))
+        ],
       ),
     );
+
+    //           default:
+    //             return const Text("Taking my time.....");
+    //         }
+    //       },
+    //     ),
+    //   );
   }
 }

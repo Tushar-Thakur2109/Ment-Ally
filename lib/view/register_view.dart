@@ -48,88 +48,96 @@ class _RegisterViewState extends State<RegisterView> {
     // );
     // return const SplashScreen();
 
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Image.asset(
+    //       'assets/logo2.png',
+    //       fit: BoxFit.cover,
+    //       alignment: Alignment.topCenter,
+    //     ),
+    //     centerTitle: true,
+    //     toolbarHeight: 150,
+    //     // backgroundColor: Color.fromARGB(255, 246, 5, 230),
+    //   ),
+    //   // child: [Center()],
+    //   body: FutureBuilder(
+    //     future: Firebase.initializeApp(
+    //         options: DefaultFirebaseOptions.currentPlatform),
+    //     builder: (context, snapshot) {
+    //       switch (snapshot.connectionState) {
+    //         case ConnectionState.done:
     return Scaffold(
-      appBar: AppBar(
-        title: Image.asset(
-          'assets/logo2.png',
-          fit: BoxFit.cover,
-          alignment: Alignment.topCenter,
-        ),
-        centerTitle: true,
-        toolbarHeight: 150,
-        // backgroundColor: Color.fromARGB(255, 246, 5, 230),
-      ),
-      // child: [Center()],
-      body: FutureBuilder(
-        future: Firebase.initializeApp(
-            options: DefaultFirebaseOptions.currentPlatform),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              return Column(
-                children: [
-                  const Text(
-                    "Do You Want To Register?",
-                    style: TextStyle(fontSize: 20, color: Colors.purple),
-                  ),
-                  TextField(
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    controller: _email,
-                    decoration: const InputDecoration(
-                        hintText: "Enter your email here.",
-                        border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.purple, width: 1.0))),
-                  ),
-                  TextField(
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    controller: _password,
-                    decoration: const InputDecoration(
-                        hintText: "Enter your password here."),
-                  ),
+      body: Column(
+        children: [
+          const Text(
+            "Do You Want To Register?",
+            style: TextStyle(fontSize: 20, color: Colors.purple),
+          ),
+          TextField(
+            enableSuggestions: false,
+            autocorrect: false,
+            controller: _email,
+            decoration: const InputDecoration(
+                hintText: "Enter your email here.",
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple, width: 1.0))),
+          ),
+          TextField(
+            obscureText: true,
+            enableSuggestions: false,
+            autocorrect: false,
+            controller: _password,
+            decoration:
+                const InputDecoration(hintText: "Enter your password here."),
+          ),
 
-                  //To grab the value of the text field is to use text controller.
+          //To grab the value of the text field is to use text controller.
 
-                  TextButton(
-                    onPressed: () async {
-                      final email = _email.text;
-                      final password = _password.text;
-                      try {
-                        final userCredential = await FirebaseAuth.instance
-                            .createUserWithEmailAndPassword(
-                          email: email,
-                          password: password,
-                        );
+          TextButton(
+            onPressed: () async {
+              final email = _email.text;
+              final password = _password.text;
+              try {
+                final userCredential =
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
 
-                        print(userCredential);
-                      } on FirebaseAuthException catch (e) {
-                        if (e.code == 'weak-password') {
-                          print('password is weak need more than 6 symbols.');
-                        } else {
-                          print("some other reason");
-                          print(e.runtimeType);
-                          print(e.code);
-                        }
-                      }
+                print(userCredential);
+              } on FirebaseAuthException catch (e) {
+                if (e.code == 'weak-password') {
+                  print('password is weak need more than 6 symbols.');
+                } else {
+                  print("some other reason");
+                  print(e.runtimeType);
+                  print(e.code);
+                }
+              }
 
-                      //I have handled the above error very well.
+              //I have handled the above error very well.
 
-                      // );
-                      // print(userCredential);
-                    },
-                    child: const Text("Register"),
-                  )
-                ],
-              );
+              // );
+              // print(userCredential);
+            },
+            child: const Text("Register"),
+          ),
 
-            default:
-              return const Text("Taking my time.....");
-          }
-        },
+          TextButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/login/', (route) => false);
+              },
+              child: const Text('Already registered? Login here!')),
+        ],
       ),
     );
+
+    //         default:
+    //           return const Text("Taking my time.....");
+    //       }
+    //     },
+    //   ),
+    // );
   }
 }
