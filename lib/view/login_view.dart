@@ -1,13 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 // import 'package:project1/firebase_options.dart';
 // import 'register_view.dart';
-//Description of this part of code
+// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
-//This code is for the login page that is for someone who has already approached the app.
-
-//The other portion is that of the register view.
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -36,41 +32,6 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //   color: Color.fromARGB(255, 69, 4, 246),
-    // );
-    // return Scaffold(
-    //   backgroundColor: Colors.blue,
-    //   appBar: AppBar(
-    //     // backgroundColor: const Color.fromARGB(255, 205, 5, 240),
-    //     title: const Text(
-    //       "Ment-Ally",
-    //       style: TextStyle(color: Color.fromARGB(255, 4, 253, 4)),
-    //     ),
-    //     centerTitle: true,
-    //   ),
-    //   body: TextButton(onPressed: () {}, child: const Text('hi')),
-    // );
-    // return const SplashScreen();
-
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: Image.asset(
-    //       'assets/logo2.png',
-    //       fit: BoxFit.cover,
-    //       alignment: Alignment.topCenter,
-    //     ),
-    //     centerTitle: true,
-    //     toolbarHeight: 150,
-    //     // backgroundColor: Color.fromARGB(255, 246, 5, 230),
-    //   ),
-    //   // child: [Center()],
-    //   body: FutureBuilder(
-    //     future: Firebase.initializeApp(
-    //         options: DefaultFirebaseOptions.currentPlatform),
-    //     builder: (context, snapshot) {
-    //       switch (snapshot.connectionState) {
-    //         case ConnectionState.done:
     return Scaffold(
       appBar: AppBar(
         title: const Text("Login Page"),
@@ -111,38 +72,13 @@ class _LoginViewState extends State<LoginView> {
                     await FirebaseAuth.instance.signInWithEmailAndPassword(
                   email: email,
                   password: password,
-
-                  //In my case instead of specific issues like username not found and password is wrong or
-                  // to short this is not working so right now I am handling them considering that they
-                  // come under the category of the Invalid User Credentials.
                 );
 
                 print(userCredential);
               } on FirebaseAuthException catch (e) {
-                // if(e.code ==)
-
                 print(e.code);
                 print(e.runtimeType);
-                // if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
-                //   print("invalid user credentials");
-                // }
-                // else if (e.code == 'INVALID_LOGIN_CREDENTIALS')
-
-                //The above line of code might not be useful becuase the error that you are getting is
-                //invalid user credentials and not invalid user name or password.
-
-                //Checkout the other version too.
-
-                // if (userCredential) {
-                //   return NotesView();
-                // }
-
-                // if(user)
               }
-
-              // (
-              // email: email,
-              // password: password,
             },
             child: const Text("Login"),
           ),
@@ -158,12 +94,5 @@ class _LoginViewState extends State<LoginView> {
         ],
       ),
     );
-
-    //           default:
-    //             return const Text("Taking my time.....");
-    //         }
-    //       },
-    //     ),
-    //   );
   }
 }
