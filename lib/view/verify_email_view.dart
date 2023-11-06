@@ -1,7 +1,3 @@
-//Here I want to create a email verification widget.
-
-//Study this code in more detail.
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -20,8 +16,6 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
           onPressed: () async {
             final user = FirebaseAuth.instance.currentUser;
             await user?.sendEmailVerification();
-
-            //Checkout the use of async and await more.
           },
           child: const Text(
             "Send email verification.",
