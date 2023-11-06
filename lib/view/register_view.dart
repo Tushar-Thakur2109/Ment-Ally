@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 // import 'package:project1/firebase_options.dart';
+// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -31,41 +31,6 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //   color: Color.fromARGB(255, 69, 4, 246),
-    // );
-    // return Scaffold(
-    //   backgroundColor: Colors.blue,
-    //   appBar: AppBar(
-    //     // backgroundColor: const Color.fromARGB(255, 205, 5, 240),
-    //     title: const Text(
-    //       "Ment-Ally",
-    //       style: TextStyle(color: Color.fromARGB(255, 4, 253, 4)),
-    //     ),
-    //     centerTitle: true,
-    //   ),
-    //   body: TextButton(onPressed: () {}, child: const Text('hi')),
-    // );
-    // return const SplashScreen();
-
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: Image.asset(
-    //       'assets/logo2.png',
-    //       fit: BoxFit.cover,
-    //       alignment: Alignment.topCenter,
-    //     ),
-    //     centerTitle: true,
-    //     toolbarHeight: 150,
-    //     // backgroundColor: Color.fromARGB(255, 246, 5, 230),
-    //   ),
-    //   // child: [Center()],
-    //   body: FutureBuilder(
-    //     future: Firebase.initializeApp(
-    //         options: DefaultFirebaseOptions.currentPlatform),
-    //     builder: (context, snapshot) {
-    //       switch (snapshot.connectionState) {
-    //         case ConnectionState.done:
     return Scaffold(
       appBar: AppBar(
         title: const Text("Register Page!"),
@@ -117,11 +82,6 @@ class _RegisterViewState extends State<RegisterView> {
                   print(e.code);
                 }
               }
-
-              //I have handled the above error very well.
-
-              // );
-              // print(userCredential);
             },
             child: const Text("Register"),
           ),
@@ -135,12 +95,5 @@ class _RegisterViewState extends State<RegisterView> {
         ],
       ),
     );
-
-    //         default:
-    //           return const Text("Taking my time.....");
-    //       }
-    //     },
-    //   ),
-    // );
   }
 }
