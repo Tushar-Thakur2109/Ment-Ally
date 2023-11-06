@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:project1/firebase_options.dart';
+// import 'package:project1/firebase_options.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -67,6 +67,9 @@ class _RegisterViewState extends State<RegisterView> {
     //       switch (snapshot.connectionState) {
     //         case ConnectionState.done:
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Register Page!"),
+      ),
       body: Column(
         children: [
           const Text(

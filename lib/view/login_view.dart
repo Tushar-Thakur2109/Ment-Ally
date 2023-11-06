@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:project1/firebase_options.dart';
+// import 'package:project1/firebase_options.dart';
 // import 'register_view.dart';
 //Description of this part of code
 
@@ -132,6 +132,12 @@ class _LoginViewState extends State<LoginView> {
                 //invalid user credentials and not invalid user name or password.
 
                 //Checkout the other version too.
+
+                // if (userCredential) {
+                //   return NotesView();
+                // }
+
+                // if(user)
               }
 
               // (
@@ -146,7 +152,9 @@ class _LoginViewState extends State<LoginView> {
                     .pushNamedAndRemoveUntil('/register/', (route) => false);
               },
               child: const Text(
-                  "If you have not registered so far then do it here!!!"))
+                  "If you have not registered so far then do it here!!!")),
+
+          TextButton(onPressed: () {}, child: const Text("Notes")),
         ],
       ),
     );

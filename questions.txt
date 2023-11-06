@@ -1,0 +1,34 @@
+Here I am going to write some question that I have related to this project.
+
+Read the code once again to get an insight of what 
+you had been up to.
+
+If you will leave the project for too long then it will be difficult to come back to it and understand it so keep that in mind 
+
+after coming back first set up the git uisng the 
+
+git status
+
+git remote add url or git remote set-url url 
+
+git remote -v 
+
+git status 
+
+git push and pull commands for obvious reasons.
+
+apart from this for flutter go for 
+
+flutter doctor 
+
+flutter upgrade or update --force if needed
+
+dart run 
+
+flutter run the first time after coming back because the app shows so many issues initially so , keep that in mind.
+
+This is just a sample app to understand the concept of app building after this make good and difficult apps.
+
+Now this time I am approaching this with some changes that is the concept of oops is to utilise the benefit of abstraction and also one of my own method is the use of burning the candle from both the sides so first I am going to learn from the top level design and then I will go in depth.
+
+Don't memorise but because of abstraction you will have to first learn specific things only it does not mean that you know everything or you don't have to learn in depth but first complete this part.
