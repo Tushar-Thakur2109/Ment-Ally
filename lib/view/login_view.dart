@@ -1,6 +1,9 @@
 // import 'package:project1/firebase_options.dart';
 // import 'register_view.dart';
 // import 'package:firebase_core/firebase_core.dart';
+
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
