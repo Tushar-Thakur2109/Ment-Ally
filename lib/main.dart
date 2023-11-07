@@ -76,3 +76,10 @@ class HomePage extends StatelessWidget {
         });
   }
 }
+
+
+//Some explanation of the methods used :-
+
+//First annotation and decorators are somewhat different.
+
+//BuildContext context is used to get the information regarding the child , descendent etc. information about the widget.

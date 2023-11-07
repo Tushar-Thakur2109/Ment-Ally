@@ -36,3 +36,5 @@ This is just a sample app to understand the concept of app building after this m
 Now this time I am approaching this with some changes that is the concept of oops is to utilise the benefit of abstraction and also one of my own method is the use of burning the candle from both the sides so first I am going to learn from the top level design and then I will go in depth.
 
 Don't memorise but because of abstraction you will have to first learn specific things only it does not mean that you know everything or you don't have to learn in depth but first complete this part.
+
+One of the question is that do widgets get hidden in flutter or do they get replaced.
