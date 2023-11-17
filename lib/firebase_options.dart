@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '88241417941',
     projectId: 'ment-ally-a207a',
     authDomain: 'ment-ally-a207a.firebaseapp.com',
+    databaseURL: 'https://ment-ally-a207a-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'ment-ally-a207a.appspot.com',
     measurementId: 'G-S0NYVTQLNH',
   );
@@ -58,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:88241417941:android:cfb618febe288ed3643c5c',
     messagingSenderId: '88241417941',
     projectId: 'ment-ally-a207a',
+    databaseURL: 'https://ment-ally-a207a-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'ment-ally-a207a.appspot.com',
   );
 
@@ -66,6 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:88241417941:ios:cea870706a6b3bcc643c5c',
     messagingSenderId: '88241417941',
     projectId: 'ment-ally-a207a',
+    databaseURL: 'https://ment-ally-a207a-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'ment-ally-a207a.appspot.com',
     iosBundleId: 'com.example.project1',
   );
@@ -75,6 +78,7 @@ class DefaultFirebaseOptions {
     appId: '1:88241417941:ios:9609b20541637be5643c5c',
     messagingSenderId: '88241417941',
     projectId: 'ment-ally-a207a',
+    databaseURL: 'https://ment-ally-a207a-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'ment-ally-a207a.appspot.com',
     iosBundleId: 'com.example.project1.RunnerTests',
   );

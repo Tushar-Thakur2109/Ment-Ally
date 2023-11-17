@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
 
               print("The code has run upto here");
               if (user != null) {
-                print("Some issue is occuring here .");
+                print("User exists.");
 
                 if (user.emailVerified) {
                   print("Code has reached upto this point");
@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
               } else {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const VerifyEmailView()));
-                return const Text("The process has completed.");
+                // return const Text("The process has completed.");
               }
 
               return const LoginView();
