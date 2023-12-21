@@ -9,17 +9,46 @@ after coming back first set up the git uisng the
 
 git status
 
+The below command did not work when I used it in case of web developement.
+
 git remote add url or git remote set-url url 
 
-git remote -v 
+So the alternate command is 
+
+git remote ( to check the name associated with the remote url ).
+
+git remote -v ( this will give the name associated with the remote url and the url too ).
+
+git remote add name url ( this is the correct command to get add the name with the url or vice versa ).
+
+Another useful command is the 
+
+git remote rename old_name new_name
+
+git remote remove < name > git remote rm < name > these two commands will remove the name associated with the url.
+
+Now regarding the git fetch , push , merge , and rebase , pull .
+
+Now keep in mind that git add . and git add --all both are the same 
+
+git reset HEAD --< file > this command is used to unstage a specific file.
+
+git push origin (finally you can use this )
+
+Keep in mind to have the backup of the repository in case some of the code base is lost.
+
+git show is also a useful command to see the changes at the respective places.
+
+Now there is a question too that how do I see the full content of the code base and the changes.
+Learn more about branches and head too.
+
+git filter
 
 git status 
 
 git commit -m "text"
 
 git push origin main 
-
-
 
 apart from this for flutter go for 
 
